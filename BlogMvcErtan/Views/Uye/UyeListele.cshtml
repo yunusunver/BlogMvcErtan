@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BlogMvcErtan.Models.Uyeler>
+
+@{
+    ViewBag.Title = "UyeListele";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Yetkilendirme.Yetkisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KullanıcıAdı)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UyeAdSoyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UyeFoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yetkilendirme.Yetkisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KullanıcıAdı)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UyeAdSoyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UyeFoto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarih)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UyeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UyeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UyeId })
+        </td>
+    </tr>
+}
+
+</table>

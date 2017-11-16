@@ -1,0 +1,65 @@
+﻿@model BlogMvcErtan.Models.Kategoriler
+
+@{
+    ViewBag.Title = "Duzenle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Duzenle</h2>
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+@using (Html.BeginForm("Duzenle","Admin",FormMethod.Post,new {enctype="multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Kategoriler</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.KategoriId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KategoriAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KategoriAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KategoriAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KategoriTanim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KategoriTanim, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KategoriTanim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img src="@Model.Resim" class="img-circle" width="100"/>
+                @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="resmimiz" name="resmimiz" accept=".jpg,.png"/>
+                @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Güncelle" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/Admin/Listele" class="btn btn-danger">Listeye geri dön</a>
+</div>

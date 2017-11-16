@@ -1,0 +1,56 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<BlogMvcErtan.Models.Kategoriler>
+
+@{
+    ViewBag.Title = "Listele";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<p>
+    <a href="/Admin/AdminCategoryAdd" class="btn btn-primary">Kategori Ekle</a>
+</p>
+<table class="table table-striped">
+    <thead>
+
+    <tr>
+        <th>
+           Kategori Adı
+        </th>
+        <th>
+            Kategori Tanım
+        </th>
+        <th>
+            Resim
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriTanim)
+        </td>
+        <td>
+            <img src="@item.Resim" class="img-rounded"  />
+        </td>
+        <td>
+            <a href="/Admin/Duzenle/@item.KategoriId"  class="btn btn-success glyphicon glyphicon-edit">Düzenle</a>|
+            <a href="/Admin/Detay/@item.KategoriId" class="btn btn-primary glyphicon glyphicon-list">Detaylar</a>|
+            <a href="/Admin/Sil/@item.KategoriId" class="btn btn-danger glyphicon glyphicon-remove">Sil</a>
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="pagedList col-md-4 col-md-offset-4">
+
+    @Html.PagedListPager(Model, sayfa => Url.Action("Listele", new { sayfa }), PagedListRenderOptions.PageNumbersOnly)
+</div>

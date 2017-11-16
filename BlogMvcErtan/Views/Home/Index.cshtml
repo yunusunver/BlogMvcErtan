@@ -1,0 +1,80 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<BlogMvcErtan.Models.Kategoriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    .col-sm-6 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    a.list-group-item {
+        height: auto;
+        min-height: 220px;
+    }
+
+        a.list-group-item.active small {
+            color: #fff;
+        }
+</style>
+
+@*@foreach (var item in Model)
+                {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@item.Resim" style="height:250px;width:250px;" />
+                <div class="caption">
+                    <span class="glyphicon glyphicon-book">@item.Makalelers.Count()</span>
+                    <h3 style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">@item.KategoriAdi</h3>
+                    <p style="overflow: hidden;text-overflow: ellipsis;">@item.KategoriTanim</p>
+                    <p><a href="/Home/MakaleListele/@item.KategoriId" class="btn btn-warning" role="button" style="width:100% ;color:#F5F5DC">Makalelere Git!&nbsp;<span class="glyphicon glyphicon-share-alt"></span></a></p>
+                </div>
+            </div>
+        </div>
+
+    }*@
+
+
+
+
+    <div class="row" style="margin-top: 20px">
+        <div class="well">
+            <h1 class="text-center">Makale Kategorileri</h1>
+            <div class="list-group">
+@foreach (var item in Model)
+{
+                <a href="/Home/MakaleListele/@item.KategoriId" class="list-group-item">
+                    <div class="media col-md-3">
+                        <figure class="pull-left">
+                            <img class="media-object img-rounded img-responsive" src="@item.Resim" alt="placehold.it/350x250">
+                        </figure>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="list-group-item-heading"> @item.KategoriAdi </h4>
+                        <p class="list-group-item-text" style="overflow: hidden;text-overflow: ellipsis;">
+                            @item.KategoriTanim
+                        </p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <h2> @item.Makalelers.Count() <small> tane makale </small></h2>
+                        <button type="button" class="btn btn-warning btn-lg btn-block">Makalelere Git</button>
+
+                    </div>
+                </a>
+}
+            </div>
+        </div>
+    </div>
+<div class="pagedList col-md-4 col-md-offset-4" >
+
+    @Html.PagedListPager(Model,sayfa=>Url.Action("Index",new { sayfa}),PagedListRenderOptions.PageNumbersOnly)
+</div>
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BlogMvcErtan.Models.Yorumlar>
+
+
+@{
+    Layout = null;
+}
+
+
+<!-- Fluid width widget -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <span class="glyphicon glyphicon-comment"></span>
+            Son Yorumlar
+        </h3>
+    </div>
+    <div class="panel-body">
+        <ul class="media-list">
+            @foreach (var item in Model)
+            {
+
+
+
+                <li class="media">
+                    <div class="media-left">
+                        <img src="@item.Uyeler.UyeFoto" width="60" height="60" class="img-circle"><b> @item.Uyeler.UyeAdSoyad</b>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+
+                            <br>
+                            <small>
+                                @item.Uyeler.UyeAdSoyad <a href="/Home/MakaleDetay/@item.Makaleler.MakaleID">@item.Makaleler.MakaleBasligi </a> makalesine yorum yaptı
+                                <span class="fa fa-times">@item.YorumTarihi</span>
+                            </small>
+                        </h4>
+                        <p>
+                            @item.YorumIcerik
+                        </p>
+                    </div>
+                </li>
+                <hr />
+            }
+        </ul>
+
+    </div>
+</div>

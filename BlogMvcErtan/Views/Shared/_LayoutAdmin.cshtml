@@ -1,0 +1,118 @@
+﻿@{ 
+    Layout = null;
+}
+@if (Convert.ToInt32(Session["yetkiid"]) ==1002)
+{
+    Response.Redirect("/Home/Index");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Admin/css/metisMenu.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Admin/css/morris.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/sb-admin-2.css" rel="stylesheet" />
+    <link href="~/Content/Admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">ADMİN PANELİ</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+                
+               
+                
+              
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Arama...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="/Admin/Listele"><i class="fa fa-table"></i> Kategorileri Listele</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/AdminCategoryAdd"><i class="fa fa-edit"></i> Kategori Ekle</a>
+                        </li>
+                        <li>
+                            <a href="/Home/Index"><i class="fa fa-dashboard fa-fw"></i> Blog'a Git</a>
+                        </li>
+                        <li>
+                            <a href="/AdminMakale/MakaleEkle"><i class="fa  fa-tasks"></i> Makale Ekle</a>
+                        </li>
+                        <li>
+                            <a href="/AdminUye/UyeListele"><i class="fa fa-user"></i> Üyeleri Listele</a>
+                        </li>
+                        <li>
+                            <a href="/AdminYorum/YorumListele"><i class="fa fa-comment"></i> Yorumları Listele</a>
+                        </li>
+                       
+                   
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">İstatistikler</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+            @{ 
+                Html.RenderAction("_PartialAdminRows", "Admin");
+            }
+
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    @Scripts.Render("~/Admin/script")
+    
+  
+
+    
+ 
+</body>
+
+</html>
+

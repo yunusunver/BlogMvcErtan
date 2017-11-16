@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BlogMvcErtan.Models.Kategoriler>
+    @{ 
+        Layout = null;
+    }
+@Styles.Render("~/HomePage/css")
+<style>
+    #kategoriler {
+        background-color: #f0ad4e;
+        border-color: #f0ad4e;
+        color: #F5F5DC;
+    }
+   
+   
+</style>
+
+    <ul class="list-group" style="margin-top:22px;">
+        <li class="list-group-item"  id="kategoriler">Kategoriler</li>
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item"  id="makaleListele"><span class="badge">@item.Makalelers.Count()</span><a href="/Home/MakaleListele/@item.KategoriId" style="color:#9d9d9d">#@item.KategoriAdi</a></li>
+        }
+        
+       
+    </ul>
+
+  
+
+    

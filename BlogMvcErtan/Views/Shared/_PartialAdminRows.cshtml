@@ -1,0 +1,91 @@
+﻿@{ 
+    Layout = null;
+}
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-comments fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.YorumSayisi</div>
+                        <div>Yorum Sayısı</div>
+                    </div>
+                </div>
+            </div>
+            <a href="">
+                <div class="panel-footer">
+                    <span class="pull-left">Tüm Yorumlar</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-tasks fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.MakaleSayisi</div>
+                        <div>Makale Sayısı</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/AdminMakale/MakaleListele">
+                <div class="panel-footer">
+                    <span class="pull-left">Tüm Makaleler</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.UyeSayisi</div>
+                        <div>Üye Sayısı</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/AdminUye/UyeListele">
+                <div class="panel-footer">
+                    <span class="pull-left">Tüm Üyeler</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-support fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.KategoriSayisi</div>
+                        <div>Kategoriler</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/Admin/Listele">
+                <div class="panel-footer">
+                    <span class="pull-left">Tüm Kategoriler</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>

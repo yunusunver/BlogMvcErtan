@@ -1,0 +1,140 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    @Styles.Render("~/HomePage/css")
+    @Scripts.Render("~/HomePage/script")
+    
+
+
+
+    
+ 
+    <style>
+        body, html {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        #ulmenu li a:hover {
+            color: #f0ad4e;
+        }
+
+        #yunusunver :hover {
+            color: #fbe9d0;
+        }
+
+        #rightloginmenu li a:hover {
+            color: #f0ad4e;
+        }
+
+    </style>
+</head>
+<body style="background-color:#F2F2F2">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" id="yunusunver" style="color:#f0ad4e">yunusunver.com</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" id="ulmenu">
+                    <li><a href="/Home/Index" id="actif"><span class="glyphicon glyphicon-home"></span>Anasayfa <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Hakkımda</a></li>
+                    <li><a href="/Home/EnPopulerler"><span class="glyphicon glyphicon-star"></span> En Popülerler</a></li>
+                    <li><a href="/Home/SonMakaleler"><span class="glyphicon glyphicon-user"></span> En Son Eklenen Makaleler</a></li>
+
+                </ul>
+
+
+                @*<form class = "navbar-form nav navbar-left", style = "padding-left:20px" typeof="post">
+
+
+                         <div class="form-group">
+                             <input type="text" class="form-control" id="txtSearch" name="searchTerm" placeholder="Birşeyler Ara">
+                         </div>
+                         <button type="submit" class="btn btn-warning" id="btnAra" style="color:black">Ara</button>
+
+                    </form>*@
+                @using (Html.BeginForm("Arama", "Home", FormMethod.Post,new {@class = "navbar-form nav navbar-left" }))
+                {
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtSearch" name="txtSearch" placeholder="Birşeyler Ara">
+                    </div>
+                    <button type="submit" class="btn btn-warning" id="btnAra" style="color:black">Ara</button>
+                }
+           
+                    
+                 
+
+
+                @if (Session["uyeid"] != null)
+                {
+                    <ul class="nav navbar-nav navbar-right" id="rightloginmenu">
+                        <li><a href="/Uye/Logout">Çıkış</a></li>
+                        @if (Convert.ToInt32(Session["yetkiid"]) == 1)
+                        {
+                            <li><a href="/Admin/Listele">@Session["kullanıcıAdı"].ToString()</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/Uye/UyeDetay/@Session["uyeid"]">@Session["kullanıcıAdı"].ToString()</a></li>
+                        }
+                    </ul>
+                }
+                else
+                {
+
+                    <ul class="nav navbar-nav navbar-right" id="rightloginmenu">
+                        <li><a href="/Uye/Login">Giriş</a></li>
+                        <li><a href="/Uye/UyeEkle">Kayıt</a></li>
+
+                    </ul>
+                }
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+   
+
+    <div class="col-md-3 hidden-xs">
+        @{
+            Html.RenderAction("_PartialKategoriler", "Home");
+        }
+        @{
+            Html.RenderAction("_PartialSonYorumlar", "Home");
+        }
+    </div>
+
+    <div class="container">
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+
+
+
+    </div>
+
+    @{
+        Html.RenderAction("_PartialFooter", "Home");
+    }
+
+
+</body>
+
+
+</html>

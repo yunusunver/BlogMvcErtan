@@ -1,0 +1,66 @@
+﻿@model BlogMvcErtan.Models.Uyeler
+
+@{
+    ViewBag.Title = "UyeDetay";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>UyeDetay</h2>
+
+<div>
+    <h4>Uyeler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Yetkilendirme.Yetkisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yetkilendirme.Yetkisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KullanıcıAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KullanıcıAdı)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UyeAdSoyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UyeAdSoyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UyeFoto)
+        </dt>
+
+        <dd>
+           <img src="~/img/uyefoto/@Model.UyeId" class="img-circle" width="100"/>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Listeye geri dön", "UyeListele","AdminUye",new { @class="btn btn-primary"})
+</p>

@@ -1,0 +1,65 @@
+﻿@model BlogMvcErtan.Models.Makaleler
+
+@{
+    ViewBag.Title = "MakaleSil";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>MakaleSil</h2>
+
+<h3>Silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>Makaleler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategoriler.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategoriler.KategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakaleBasligi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakaleBasligi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Makaleİcerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Makaleİcerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakaleFoto)
+        </dt>
+
+        <dd>
+            <img src="@Model.MakaleFoto" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakaleTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakaleTarih)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye geri dön", "MakaleListele")
+        </div>
+    }
+</div>

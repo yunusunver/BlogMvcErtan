@@ -1,0 +1,67 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<BlogMvcErtan.Models.Uyeler>
+
+@{
+    ViewBag.Title = "UyeListele";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Yetki
+        </th>
+        <th>
+            Kullanıcı Adı
+        </th>
+        <th>
+            Şifre
+        </th>
+        <th>
+            Ad Soyad
+        </th>
+        <th>
+            Resim
+        </th>
+        <th>
+            Tarih
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yetkilendirme.Yetkisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KullanıcıAdı)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UyeAdSoyad)
+        </td>
+        <td>
+            <img src="~/img/uyefoto/@item.UyeFoto" class="img-circle" width="100"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarih)
+        </td>
+        <td>        
+            @Html.ActionLink("Detay", "UyeDetay", new { id=item.UyeId }) |
+            @Html.ActionLink("Sil", "UyeSil", new { id=item.UyeId })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="pagedList col-md-4 col-md-offset-4">
+
+    @Html.PagedListPager(Model, sayfa => Url.Action("UyeListele", new { sayfa }), PagedListRenderOptions.PageNumbersOnly)
+</div>

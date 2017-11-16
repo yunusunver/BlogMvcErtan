@@ -1,0 +1,57 @@
+﻿@model BlogMvcErtan.Models.Yorumlar
+
+@{
+    ViewBag.Title = "YorumSil";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>YorumSil</h2>
+
+<h3>Yorumu silmek istiyormusunuz?</h3>
+<div>
+    <h4>Yorumlar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Makaleler.MakaleBasligi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Makaleler.MakaleBasligi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uyeler.KullanıcıAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uyeler.KullanıcıAdı)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YorumIcerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YorumIcerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YorumTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YorumTarihi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye geri dön", "YorumListele")
+        </div>
+    }
+</div>
